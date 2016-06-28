@@ -2,13 +2,13 @@ using System.Collections.Generic;
 
 namespace JobBoard.Objects
 {
-  public class Job
+  public class JobOpening
   {
     private string _title;
     private string _description;
     private string _contact;
-    private static List<Job> _instances = new List<Job> {};
-    public Job (string title, string description, string contact)
+    private static List<JobOpening> _instances = new List<JobOpening> {};
+    public JobOpening (string title, string description, string contact)
     {
       _title = title;
       _description = description;
@@ -38,7 +38,7 @@ namespace JobBoard.Objects
     {
       _contact = newContact;
     }
-    public static List<Job> GetAll()
+    public static List<JobOpening> GetAll()
     {
       return _instances;
     }

@@ -8,20 +8,20 @@ namespace JobBoard
   {
     public HomeModule()
     {
-      Get["/"] = _ => View ["job_form"];
-      Get["job_board"] = _ => {
-        List<Job> allJobs = Job.GetAll();
+      Get["/"] = _ => View ["job_form.cshtml"];
+      Get["/job_board"] = _ => {
+        List<JobOpening> allJobs = JobOpening.GetAll();
         return View ["job_board.cshtml", allJobs];
       };
-      Post["job_board"] = _ => {
-        Job newJob = new Job
+      Post["/job_listing"] = _ => {
+        JobOpening newJobOpening = new JobOpening
         (
         Request.Form["new-title"],
         Request.Form["new-description"],
         Request.Form["new-contact"]
         );
-        newJob.Save();
-        return View ["job_board.cshtml", newJob];
+        newJobOpening.Save();
+        return View ["job_listing.cshtml", newJobOpening];
       };
     }
   }

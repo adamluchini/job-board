@@ -1,8 +1,11 @@
 <h1>Job Board</h1>
-<p>@Model.GetTitle()
-  <ul>
-    <li>@Model.GetDescription()</li>
-    <li>@Model.GetContact()</li>
-  </ul>
-</p>
+@foreach(var listing in Model)
+{
+  <p>@listing.GetTitle()
+    <ul>
+      <li>@listing.GetDescription()</li>
+      <li>@listing.GetContact()</li>
+    </ul>
+  </p>
+}
 <p><a href="/">Add another job listing</a></p>
