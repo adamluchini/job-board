@@ -9,11 +9,8 @@ namespace JobBoard
     public HomeModule()
     {
       Get["/"] = _ => View ["job_form.cshtml"];
-      Get["/job_board"] = _ => {
+      Post["/job_board"] = _ => {
         List<JobOpening> allJobs = JobOpening.GetAll();
-        return View ["job_board.cshtml", allJobs];
-      };
-      Post["/job_listing"] = _ => {
         JobOpening newJobOpening = new JobOpening
         (
         Request.Form["new-title"],
@@ -21,7 +18,7 @@ namespace JobBoard
         Request.Form["new-contact"]
         );
         newJobOpening.Save();
-        return View ["job_listing.cshtml", newJobOpening];
+        return View ["job_board.cshtml", allJobs];
       };
     }
   }
